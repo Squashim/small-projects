@@ -1,13 +1,8 @@
 let arr = document.querySelectorAll(".content");
-const overlays = document.getElementsByClassName("overlay");
-console.log(overlays);
 const targetDate = new Date();
 targetDate.setHours(targetDate.getHours() + 336);
 
-let lastDays = "";
-let lastHours = "";
-let lastMin = "";
-let lastSec = "";
+
 
 const countdownTimer = setInterval(() => {
 	let currentTime = new Date().getTime();
@@ -28,27 +23,12 @@ const countdownTimer = setInterval(() => {
 	let currentHours = `${hours}`;
 	let currentMin = `${minutes}`;
 	let currentSec = `${seconds}`;
+	
+	arr[0].innerHTML = days;
+	arr[1].innerHTML = hours;
+	arr[2].innerHTML = minutes;
+	arr[3].innerHTML = seconds;
 
-	if (currentDays !== lastDays) {
-		arr[0].innerHTML = days;
-		overlays[0].classList.toggle("flip");
-		lastDays = currentDays;
-	}
-	if (currentHours !== lastHours) {
-		arr[1].innerHTML = hours;
-		overlays[1].classList.toggle("flip");
-		lastHours = currentHours;
-	}
-	if (currentMin !== lastMin) {
-		arr[2].innerHTML = minutes;
-		overlays[2].classList.toggle("flip");
-		lastMin = currentMin;
-	}
-	if (currentSec !== lastSec) {
-		arr[3].innerHTML = seconds;
-		overlays[3].classList.toggle("flip");
-		lastSec = currentSec;
-	}
 
 	if (timeRemaining < 0) {
 		clearInterval(countdown);
